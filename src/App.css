@@ -1,40 +1,97 @@
-body, html {
-  background-color: gray;
-  height: 100%;
+body {
+  background-color: rgba(80, 166, 243, 0.552);
+  height: 100vh;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
-
-#videos {
+body * {
+  box-sizing: border-box;
+}
+.room {
+  width: 100%;
+  max-width: 600px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.room__content {
   position: relative;
   width: 100%;
   height: 240px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  justify-content: center;
 }
 
-#subscriber {
-  position: relative;
-  width: 50%;
-  z-index: 100;
-  border: 3px solid white;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-#publisher {
+.room__video {
   position: relative;
   z-index: 100;
   width: 50%;
   border: 3px solid white;
   border-radius: 3px;
   overflow: hidden;
+  min-width: 286px;
 }
 
+.lobby {
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  height: 240px;
+  background: white;
+  border: 3px solid white;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.lobby__video {
+  height: 100%;
+}
+.lobby__video video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+
+}
 .lobby__settings {
+  width: 300px;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-flow: column;
   gap: 8px;
+}
+
+.lobby__title {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+}
+.lobby__select {
+  width: 240px;
+}
+
+@media screen and (max-width: 600px) {
+  .lobby {
+    height: auto;
+    flex-direction: column;
+  }
+  .room {
+    height: auto;
+    flex-direction: column;
+  }
+  .room__content {
+    flex-direction: column;
+    min-height: 500px;
+  }
+  .room__video {
+    width: 100%;
+    height: 240px;
+  }
 }

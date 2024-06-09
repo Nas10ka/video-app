@@ -96,33 +96,33 @@ const Lobby = ({
   },[])
 
   return (
-    <Card className='lobby' sx={{ width: 800, position: 'relative', height: '80vh' }}>
-      <CardCover className='lobby__video' >
+    <Card className='lobby'>
+      <CardContent className='lobby__video'>
           <video
             ref={videoElement}
             autoPlay
           />
-      </CardCover>
-      <CardContent className="lobby__settings" sx={{ width: '300px' }}>
-          <Typography variant="solid" color="primary" sx={{ zIndex: 1, position: 'relative', textAlign: 'center'}}>
+      </CardContent>
+      <CardContent className="lobby__settings">
+          <Typography variant="solid" color="primary" className='lobby__title'>
             You are joining from {parseUserAgent()}</Typography>
         <Select
+          className="lobby__select"
           ref={videoDeviceSelect}
           onChange={handleVideoDeviceChanged}
           value={videoDevice || videoDevices[0]?.deviceId}
           placeholder="Select video source"
           startDecorator={<VideoCameraFrontIcon />}
-          sx={{ width: 240 }}
         >
           {videoDevices.map((device) =>
             <Option key={device.deviceId} value={device.deviceId}>{device.label || `audio-${device.deviceId}`}</Option>)}
         </Select>
         <Select
+          className="lobby__select"
           onChange={handleAudioDeviceChanged}
           value={audioDevice || audioDevices[0]?.deviceId}
           placeholder="Select audio source"
           startDecorator={<SettingsVoiceIcon />}
-          sx={{ width: 240 }}
         >
           {audioDevices.map((device) =>
             <Option key={device.deviceId} value={device.deviceId}>{device.label || `video-${device.deviceId}`}</Option>)}

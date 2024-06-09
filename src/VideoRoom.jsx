@@ -36,7 +36,6 @@ const initializeSession = (audioDevice, videoDevice) => {
   });
   return session;
 }
-
 const VideoRoom = ({
   audioDevice, videoDevice, setLobbySetup
 }) => {
@@ -55,10 +54,10 @@ const VideoRoom = ({
   }, []);
 
   return (
-    <Card sx={{ width: 600, justifyContent: 'center', display: 'flex' ,flexWrap: 'wrap', padding: '16px' }}>
-      <div id="videos">
-        <div id="publisher"></div>
-        <div id="subscriber"></div>
+    <Card className='room'>
+      <div id="videos" className='room__content'>
+        <div id="publisher" className='room__video publisher'></div>
+        <div id="subscriber" className='room__video subscriber'></div>
       </div>
       <Button variant="contained" onClick={leaveSession}>Leave</Button>
     </Card>
