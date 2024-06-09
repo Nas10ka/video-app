@@ -1,7 +1,42 @@
+import OT from '@opentok/client';
+
 export const handleError = (error) => {
     if (error) {
         alert(error.message);
     }
+}
+
+export const initializeSession = (audioDevice, videoDevice) => {
+    const session = OT.initSession(API_KEY, SESSION_ID);
+
+    // Subscribe to a newly created stream
+    session.on('streamCreated', (event) => {
+        const subscriberOptions = {
+            insertMode: 'append',
+            width: '100%',
+            height: '100%',
+        };
+        session.subscribe(event.stream, 'subscriber', subscriberOptions, handleError);
+    });
+    // Create a publisher
+        const publisher = OT.initPublisher('publisher', {
+            insertMode: 'append',
+            width: '100%',
+            height: '100%',
+            videoSource: videoDevice,
+            audioSource: audioDevice,
+        }, handleError);
+
+        // Connect to the session
+        session.connect(TOKEN, function(error) {
+        // If the connection is successful, publish to the session
+        if (error) {
+            handleError(error);
+        } else {
+            session.publish(publisher, handleError);
+        }   
+    });
+    return session;
 }
 
 export const parseUserAgent = () => {

@@ -3,7 +3,6 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/joy/Typography';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardCover from '@mui/joy/CardCover';
 import Button from '@mui/material/Button';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
